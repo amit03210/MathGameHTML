@@ -1,0 +1,205 @@
+:root {
+  --bg-color: #0f1115;
+  --surface-color: #1a1c23;
+  --border-color: #333640;
+  --text-primary: #ffffff;
+  --text-secondary: #8c909e;
+  --primary-accent: #0b57d0;
+  --success: #6dd58c;
+  --error: #f2b8b5;
+  --font-family: "Google Sans", sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* Display Area (Learning/Quiz Grid & Flashcards) */
+.display-area {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Updated to use CSS columns for Vertical Top-To-Bottom flow */
+.learning-grid {
+  column-count: 2;
+  column-gap: 0.5rem;
+  width: 100%;
+}
+
+.grid-item {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+  font-weight: 700;
+  background: transparent;
+  transition: all 0.2s ease;
+
+  /* Prevent item splitting across columns & format as blocks */
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 0.5rem;
+}
+
+.grid-item.active-quiz {
+  border-color: var(--text-primary);
+  background: var(--surface-color);
+}
+
+.grid-item.correct {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.grid-item.wrong {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+/* Flashcard Specific */
+.flashcard-container {
+  text-align: center;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 4rem 2rem;
+}
+
+.flashcard-timer {
+  font-family: monospace;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.flashcard-q {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.flashcard-a {
+  font-size: 3rem;
+  color: var(--success);
+  min-height: 56px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Score Area */
+.score-container {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.score-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.score-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Controls Area */
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  align-items: end;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.control-input {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.control-input:focus {
+  border-color: var(--text-secondary);
+}
+
+.control-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: #2a2d35;
+  color: var(--text-primary);
+  border: none;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #3f4350;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
