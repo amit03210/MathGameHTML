@@ -48,7 +48,7 @@ function populateFocusOptions(category) {
 
   if (category === "tables") {
     focusLabel.innerText = "Focus Number";
-    for (let i = 1; i <= 30; i++) {
+    for (let i = 2; i <= 30; i++) {
       focusSelect.innerHTML += `<option value="${i}">${i}</option>`;
     }
   } else if (category === "fractions") {
@@ -71,7 +71,7 @@ function generateData() {
   let data = [];
 
   if (category === "tables") {
-    for (let i = 1; i <= 10; i++)
+    for (let i = 2; i <= 11; i++)
       data.push({ q: `${focus} × ${i}`, a: focus * i });
   } else if (category === "squares") {
     let start = (focus - 1) * 10 + 1;
